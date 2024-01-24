@@ -1,0 +1,37 @@
+---
+documentaclass: article
+fontsize: 12pt
+
+lang: es
+
+# indent: true
+indent: false
+
+colorlinks: true
+
+geometry:
+- margin = 2cm
+- includefoot
+- a4paper
+
+header-includes:
+- \usepackage{graphicx}
+- \usepackage{booktabs}
+- \usepackage{icomma}
+
+titulo: "Trabajo práctico final"
+# tema: Tema trabajo práctico
+carrera: FCEIA
+materia: Procesamiento del Lenguaje Natural
+# comision: "Comisión #"
+fecha: Enero, 2024.
+
+integrante:
+- Garay Gorta, Isaías.
+
+docente:
+- Cavallo, Andrea.
+- D'Alessandro, Ariel.
+- Geary, Alan.
+- Manson, Juan Pablo.
+---
