@@ -10,6 +10,18 @@ Para la implementación del **RAG** se utilizaron como fuentes de datos los sigu
 
 A los archivos `pdf` se les extrajo el texto y se normalizo para luego vectorizarlos y almacenarlos en una base de datos ChromaDB. Respecto a los datos tabulares del `csv` se decidió quedarse solamente con las entradas del año 2023 debido a que el archivo es muy extenso. Por último se usará la base de datos externa para aquellas búsquedas relacionadas con programación pero no específicamente sobre Python.
 
+## Documentos de texto
+
+A los strings que se obtienen de los archivos pdf se les aplica una limpieza en las que se remueven los acentos y las *stop words* del texto, luego se divide este texto en fragmentos para mejorar los resultados del modelo, finalmente se realiza un *embedding* para obtener el significado semántico del texto y se almacenan estos embeddings en una base de datos *ChromaDB*.
+
+## Base de datos de grafos
+
+Para esta parte se utilizará la base de grafos online DBpedia, esta servirá para brindarle contexto al modelo cuando el usuario haga preguntas sobre conceptos más generales sobre programación o sobre otros lenguajes que no sean Python, en los ejemplos del código vemos que es posible preguntarle sobre el lenguaje *Java* gracias a que puede obtener la información de contexto pertinente desde la base de datos de grafos.
+
+## Datos tabulares
+
+De los datos tabulares se obtendrá la descripción del proyecto si es posible obtener el nombre del proyecto desde el prompt del usuario en otro caso se usara todo el dataframe como un string para brindarle contexto al modelo.
+
 ## Elección de la fuente de datos.
 
 Se utilizará el modelo pre-entrenado `paraphrase-MiniLM-L6-v2` para hacer el embedding de la consulta del usuario y calcular la similaridad con las consultas de ejemplo, de esta forma se puede elegir cual de las tres fuentes externas es más probable que responda la pregunta original.
@@ -19,6 +31,12 @@ Se utilizará el modelo pre-entrenado `paraphrase-MiniLM-L6-v2` para hacer el em
 La 'generación aumentada por recuperación' (RAG) consiste en proporcionar a los modelos de lenguaje de gran escala (LMM) información de contexto adicional sobre algún tema en particular. Esto permite que los modelos puedan producir respuestas más exactas.
 
 Finalmente se puede apreciar que el sistema responde de forma satisfactoria a las consultas usando solamente la información que obtiene del prompt de contexto que se le brinda.
+
+## Conclusión
+
+En este proyecto, se ha demostrado la eficacia de la Generación Aumentada por Recuperación (RAG) como método para mejorar la capacidad de los modelos de lenguaje de gran escala (LMM) para generar respuestas precisas y contextualmente relevantes. A través de la integración de diversas fuentes de datos, como documentos de texto, bases de datos de grafos y datos tabulares, se ha enriquecido el conocimiento del modelo, permitiéndole responder a una amplia gama de consultas relacionadas con la programación, específicamente en el contexto de Python y otros lenguajes.
+
+La extracción, limpieza y vectorización de datos de documentos `pdf` y archivos `csv`, junto con el uso de bases de datos externas como DBpedia, ha proporcionado al modelo un sólido conjunto de información contextual. Este enfoque ha permitido al modelo comprender y responder de manera efectiva a preguntas sobre conceptos de programación.
 
 # Ejercicio 2
 
